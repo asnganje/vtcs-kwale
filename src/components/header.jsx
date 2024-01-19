@@ -1,13 +1,21 @@
 import { Link } from "react-router-dom";
 import kwaleLogo from "../assets/logo.png"
 import { nanoid } from "nanoid"
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../redux/store";
 
 const data = [
     {id: nanoid(), text: "VTCs"},
     {id: nanoid(), text: "Courses"}
 ]
 const Header = () => {
-    const loggedIn = false;
+    const {loggedIn, name} = useSelector((state)=>state.user)
+    const dispatch = useDispatch()
+
+    const logOutHandler = ()=> {
+        dispatch(logout())
+    }
+
     const renderedHeaderItems = data.map((item)=> {
         return(
             <li className="cursor-pointer" key={item.id}>{item.text}</li>
@@ -24,7 +32,7 @@ const Header = () => {
                 </ul>
                 {<div className="p-2 flex items-center space-x-4">
                 {!loggedIn && <Link to="/login"><button>Login</button></Link>}
-                {loggedIn &&<p>Welcome user,</p>}
+                {loggedIn &&<p className="space-x-3">Welcome {name} <Link to="/" className="ml-4"><button onClick={logOutHandler}>Logout</button></Link></p>}
                 </div>}
             </div>
         </div>
