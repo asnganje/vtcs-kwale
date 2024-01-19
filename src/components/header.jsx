@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import kwaleLogo from "../assets/logo.png"
 import { nanoid } from "nanoid"
 
@@ -22,7 +23,7 @@ const Header = () => {
                     {renderedHeaderItems}
                 </ul>
                 {<div className="p-2 flex items-center space-x-4">
-                {!loggedIn &&<button>Login</button>}
+                {!loggedIn && <Link><button>Login</button></Link>}
                 {loggedIn &&<p>Welcome user</p>}
                 </div>}
             </div>
