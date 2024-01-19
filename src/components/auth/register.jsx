@@ -1,7 +1,11 @@
+import { IoMdArrowRoundBack } from "react-icons/io";
 import { Link } from "react-router-dom";
+import Header from "../header";
 
 const Register = () => {
     return(
+        <div className="mx-[5%]">
+            <Header />
         <div className="flex items-center text-xl font-mono justify-center h-screen">
             <div className="bg-blue-100 p-5 shadow-lg rounded-md w-[70vh]">
                 <form>
@@ -36,8 +40,10 @@ const Register = () => {
                     <button className="text-white rounded-md w-[50%] mx-[35%] bg-blue-400 hover:bg-blue-500 p-2">Register</button>
                 </form>
                 <div className="flex gap-5 mt-5">
-                    <p className="text-gray-600 italic space-x-0">Already registered?</p><Link to='/' className="text-gray-600 hover:text-blue-500 hover:underline">Login here!</Link>
+                    <p className="text-gray-600 italic space-x-0">Already registered?</p><Link to='/login' className="text-gray-600 hover:text-blue-500 hover:underline">Login here!</Link>
                 </div>
+            </div>
+            <Link to="/"><p className="mt-[50vh] flex items-center cursor-pointer hover:underline hover:text-blue-400"><IoMdArrowRoundBack />Back to home</p></Link>
             </div>
             </div>
     )

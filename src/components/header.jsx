@@ -23,8 +23,8 @@ const Header = () => {
                     {renderedHeaderItems}
                 </ul>
                 {<div className="p-2 flex items-center space-x-4">
-                {!loggedIn && <Link><button>Login</button></Link>}
-                {loggedIn &&<p>Welcome user</p>}
+                {!loggedIn && <Link to="/login"><button>Login</button></Link>}
+                {loggedIn &&<p>Welcome user,</p>}
                 </div>}
             </div>
         </div>
