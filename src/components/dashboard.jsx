@@ -4,7 +4,7 @@ const Dashboard = () => {
     return(
         <main className="mx-[5%]">
             <Header />
-            VTCs Dashboard
+            This is our story
         </main>
     )
 }
