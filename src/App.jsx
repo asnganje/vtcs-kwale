@@ -1,8 +1,13 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Dashboard from "./components/dashboard";
+
 const App = () => {
   return(
-    <div className="italic font-mono">
-      VTCs App
-    </div>
+    <BrowserRouter>
+      <Routes>
+          <Route path="/" element={<Dashboard />}/>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
