@@ -6,6 +6,7 @@ const data = [
     {id: nanoid(), text: "Courses"}
 ]
 const Header = () => {
+    const loggedIn = false;
     const renderedHeaderItems = data.map((item)=> {
         return(
             <li className="cursor-pointer" key={item.id}>{item.text}</li>
@@ -20,10 +21,10 @@ const Header = () => {
                 <ul className="flex space-x-4">
                     {renderedHeaderItems}
                 </ul>
-                <div className="p-2 flex items-center space-x-4">
-                <button>Login</button>
-                <button>Sign Up</button>
-                </div>
+                {<div className="p-2 flex items-center space-x-4">
+                {!loggedIn &&<button>Login</button>}
+                {loggedIn &&<p>Welcome user</p>}
+                </div>}
             </div>
         </div>
     )
