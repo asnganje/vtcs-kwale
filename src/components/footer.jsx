@@ -12,6 +12,8 @@ const data = [
     {id: nanoid(), icon: <CiLinkedin/>},
     {id: nanoid(), icon: <FaTelegramPlane/>}
 ]
+
+const date = new Date().getFullYear()
 const Footer = () => {
     const renderedIcons = data.map((icon)=> {
         return(
@@ -20,7 +22,7 @@ const Footer = () => {
     })
     return(
         <div className="absolute shadow-lg border bottom-0 left-0 flex flex-col justify-between w-[100%] gap-1 font-mono items-center">
-            <p>&copy; 2024 devNganje. All rights reserved.</p>
+            <p>&copy; {date} devNganje. All rights reserved.</p>
             <ul className="font-mono mb-3 flex gap-2">{renderedIcons}</ul>
         </div>
     )
