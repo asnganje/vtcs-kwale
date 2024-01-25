@@ -1,7 +1,7 @@
-import { Link} from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import kwaleLogo from "../assets/logo.png"
 import { nanoid } from "nanoid"
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { setLoggedOut } from "../redux/store";
 
 const data = [
@@ -9,11 +9,14 @@ const data = [
     {id: nanoid(), text: "Courses"}
 ]
 const Header = () => {
-    const {loggedIn} = useSelector((state)=>state.user) 
+    const headerUser = localStorage.getItem('user')
+    console.log(headerUser);
     const dispatch = useDispatch()
-
+    const navigate = useNavigate()
     const logOutHandler = ()=> {
         dispatch(setLoggedOut(false))
+        localStorage.removeItem('user')
+        navigate('/')
     }
 
     const renderedHeaderItems = data.map((item)=> {
@@ -31,8 +34,8 @@ const Header = () => {
                     {renderedHeaderItems}
                 </ul>
                 {<div className="p-2 flex items-center space-x-4">
-                {!loggedIn && <Link to="/login"><button>Login</button></Link>}
-                {loggedIn &&<p className="space-x-3">Welcome<Link to="/" className="ml-4"><button onClick={logOutHandler}>Logout</button></Link></p>}
+                {!headerUser && <Link to="/login"><button>Login</button></Link>}
+                {headerUser &&<p className="space-x-3">Welcome {headerUser}<Link to="/" className="ml-4"><button onClick={logOutHandler}>Logout</button></Link></p>}
                 </div>}
             </div>
         </div>
