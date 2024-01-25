@@ -3,6 +3,7 @@ import {createUser, login, logout} from '../thunks/userThunk'
 
 const person = {
     isLoading: false,
+    registered:false,
     loggedIn: false,
     data: []
 }
@@ -16,6 +17,7 @@ const userSlice = createSlice({
         }),
         builder.addCase(createUser.fulfilled, (state)=> {
             state.isLoading = false
+            state.registered = true
         }),
         builder.addCase(createUser.rejected, (state)=> {
             state.isLoading = false
