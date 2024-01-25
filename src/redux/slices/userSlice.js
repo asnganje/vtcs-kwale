@@ -1,58 +1,48 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {createUser, login, logout} from '../thunks/userThunk'
+import { createUser, login } from "../thunks/userThunk";
 
 const person = {
     isLoading: false,
-    registered:false,
+    registered: false,
     loggedIn: false,
-    dataU: []
-}
+    dataU: [],
+};
 
 const userSlice = createSlice({
-    name: 'user',
+    name: "user",
     initialState: person,
     reducers: {
-        setLoggedIn:(state,action)=> {
-            state.loggedIn = action.payload
-        },
-        setLoggedOut:(state, action)=> {
-            state.loggedIn = action.payload
-        }
+    setLoggedIn: (state, action) => {
+    state.loggedIn = action.payload;
     },
-    extraReducers(builder){
-        builder.addCase(createUser.pending, (state)=> {
-            state.isLoading = true
-        }),
-        builder.addCase(createUser.fulfilled, (state)=> {
-            state.isLoading = false
-            state.registered = true
-        }),
-        builder.addCase(createUser.rejected, (state)=> {
-            state.isLoading = false
-        }),
-        builder.addCase(login.pending, (state)=> {
-            state.isLoading = true
-        }),
-        builder.addCase(login.fulfilled, (state,action)=> {
-            state.isLoading = false
-            state.dataU.push(action.payload)
-        }),
-        builder.addCase(login.rejected, (state)=> {
-            state.isLoading = false
-        }),
-        builder.addCase(logout.pending, (state)=> {
-            state.isLoading = true
-        }),
-        builder.addCase(logout.fulfilled, (state)=> {
-            state.isLoading = false
-            state.loggedIn = false;
-            state.dataU.pop()
-        }),
-        builder.addCase(logout.rejected, (state)=> {
-            state.isLoading = false
-        })
-    } 
-})
+    setLoggedOut: (state, action) => {
+    state.loggedIn = action.payload;
+    state.dataU.pop();
+    },
+    },
+    extraReducers(builder) {
+    builder.addCase(createUser.pending, (state) => {
+    state.isLoading = true;
+    }),
+    builder.addCase(createUser.fulfilled, (state) => {
+        state.isLoading = false;
+        state.registered = true;
+    }),
+    builder.addCase(createUser.rejected, (state) => {
+        state.isLoading = false;
+    }),
+    builder.addCase(login.pending, (state) => {
+        state.isLoading = true;
+    }),
+    builder.addCase(login.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.dataU.push(action.payload);
+    }),
+    builder.addCase(login.rejected, (state) => {
+        state.isLoading = false;
+    });
+},
+});
 
-export const {setLoggedIn, setLoggedOut} = userSlice.actions
+export const { setLoggedIn, setLoggedOut } = userSlice.actions;
 export const userReducer = userSlice.reducer;
