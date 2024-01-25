@@ -1,8 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios'
-const backendUrl = ""
+const backendUrl = "http://localhost:3000/api/v1/vtc"
 const createUser = createAsyncThunk('user/createUser', async(user)=> {
-    const url = backendUrl;
+    const url = `${backendUrl}/register`;
     try {
         const response = await axios.post(url, user)
         return response.data;
