@@ -1,15 +1,19 @@
 import { IoMdArrowRoundBack } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Header from "../header";
 import Footer from "../footer";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { login } from "../../redux/thunks/userThunk";
+import { setLoggedIn } from "../../redux/store";
+
+
 const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const {loggedIn} = useSelector((store)=> store.user)
+    const navigate = useNavigate()
+
     const dispatch = useDispatch()
 
     const emailChangeHandler = (e) => {
@@ -21,17 +25,26 @@ const Login = () => {
     }
 
     const user = {email, password}
-    const handleLoginSubmit = (e) => {
+    const handleLoginSubmit = async (e) => {
         e.preventDefault();
-        dispatch(login(user))
-        setEmail('')
-        setPassword('')
+        
+        dispatch(login(user)).then((result) => {
+            if (result.payload) {
+                localStorage.setItem('user', result.payload.msg.firstName)
+                dispatch(setLoggedIn(true))
+                navigate('/');
+                setEmail('');
+                setPassword('');
+            }
+        })
+        .catch((error) => {
+            console.error("Login error:", error);
+        });
     }
 
     return(
         <div className="relative h-screen mx-[5%]">
             <Header />
-            {loggedIn && <p className="text-green-500 text-2xl mx-[40%] font-mono">Success...</p>}
         <div className="flex items-center text-xl font-mono justify-center">
             <div className="bg-blue-100 p-5 shadow-lg rounded-md h-full w-[65vh]">
                 <form onSubmit={handleLoginSubmit}>

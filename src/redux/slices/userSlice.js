@@ -11,6 +11,14 @@ const person = {
 const userSlice = createSlice({
     name: 'user',
     initialState: person,
+    reducers: {
+        setLoggedIn:(state,action)=> {
+            state.loggedIn = action.payload
+        },
+        setLoggedOut:(state, action)=> {
+            state.loggedIn = action.payload
+        }
+    },
     extraReducers(builder){
         builder.addCase(createUser.pending, (state)=> {
             state.isLoading = true
@@ -27,12 +35,10 @@ const userSlice = createSlice({
         }),
         builder.addCase(login.fulfilled, (state,action)=> {
             state.isLoading = false
-            state.loggedIn = true
             state.dataU.push(action.payload)
         }),
         builder.addCase(login.rejected, (state)=> {
             state.isLoading = false
-            state.loggedIn = false
         }),
         builder.addCase(logout.pending, (state)=> {
             state.isLoading = true
@@ -48,4 +54,5 @@ const userSlice = createSlice({
     } 
 })
 
+export const {setLoggedIn, setLoggedOut} = userSlice.actions
 export const userReducer = userSlice.reducer;
