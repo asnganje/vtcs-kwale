@@ -8,7 +8,7 @@ const data = [
     {id: nanoid(), text: "Courses"}
 ]
 const Header = () => {
-    const {loggedIn, name} = useSelector((state)=>state.user)
+    const {loggedIn} = useSelector((state)=>state.user) 
     const dispatch = useDispatch()
 
     const logOutHandler = ()=> {
@@ -31,7 +31,7 @@ const Header = () => {
                 </ul>
                 {<div className="p-2 flex items-center space-x-4">
                 {!loggedIn && <Link to="/login"><button>Login</button></Link>}
-                {loggedIn &&<p className="space-x-3">Welcome {name} <Link to="/" className="ml-4"><button onClick={logOutHandler}>Logout</button></Link></p>}
+                {loggedIn &&<p className="space-x-3">Welcome<Link to="/" className="ml-4"><button onClick={logOutHandler}>Logout</button></Link></p>}
                 </div>}
             </div>
         </div>
