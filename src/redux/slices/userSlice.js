@@ -19,9 +19,20 @@ const userSlice = createSlice({
         }),
         builder.addCase(createUser.rejected, (state,action)=> {
             state.isLoading = false
+        }),
+        builder.addCase(login.pending, (state)=> {
+            state.isLoading = true
+        }),
+        builder.addCase(login.fulfilled, (state,action)=> {
+            state.isLoading = false
+            state.loggedIn = true
+            state.data.push(action.payload)
+        }),
+        builder.addCase(login.rejected, (state)=> {
+            state.isLoading = false
+            state.loggedIn = false
         })
     } 
 })
 
 export const userReducer = userSlice.reducer;
-export const {logout} = userSlice.actions;
