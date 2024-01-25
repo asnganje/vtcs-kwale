@@ -5,7 +5,7 @@ const person = {
     isLoading: false,
     registered:false,
     loggedIn: false,
-    data: []
+    dataU: []
 }
 
 const userSlice = createSlice({
@@ -28,7 +28,7 @@ const userSlice = createSlice({
         builder.addCase(login.fulfilled, (state,action)=> {
             state.isLoading = false
             state.loggedIn = true
-            state.data.push(action.payload)
+            state.dataU.push(action.payload)
         }),
         builder.addCase(login.rejected, (state)=> {
             state.isLoading = false
@@ -40,7 +40,7 @@ const userSlice = createSlice({
         builder.addCase(logout.fulfilled, (state)=> {
             state.isLoading = false
             state.loggedIn = false;
-            state.data.pop()
+            state.dataU.pop()
         }),
         builder.addCase(logout.rejected, (state)=> {
             state.isLoading = false
