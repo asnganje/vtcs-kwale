@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import kwaleLogo from "../assets/logo.png"
 import { nanoid } from "nanoid"
 import { useDispatch, useSelector } from "react-redux";
+import { setLoggedOut } from "../redux/store";
 
 const data = [
     {id: nanoid(), text: "VTCs"},
@@ -12,7 +13,7 @@ const Header = () => {
     const dispatch = useDispatch()
 
     const logOutHandler = ()=> {
-        dispatch()
+        dispatch(setLoggedOut(false))
     }
 
     const renderedHeaderItems = data.map((item)=> {
