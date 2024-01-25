@@ -1,21 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import {createUser, login, logout} from '../thunks/userThunk'
 
 const person = {
-    loggedIn: true,
-    name: "Nafisa"
+    isLoading: false,
+    loggedIn: false,
+    data: []
 }
 
 const userSlice = createSlice({
     name: 'user',
     initialState: person,
-    reducers : {
-        logout: (state)=>{
-            state = {...state, loggedIn:false}
-            return state;
-        }
-    }
-    // extraReducers(builder): {} 
+    extraReducers(builder){
+        builder.addCase(createUser.pending, (state)=> {
+            state.isLoading = true
+        }),
+        builder.addCase(createUser.fulfilled, (state)=> {
+            state.isLoading = false
+        }),
+        builder.addCase(createUser.rejected, (state,action)=> {
+            state.isLoading = false
+        })
+    } 
 })
 
 export const userReducer = userSlice.reducer;
