@@ -13,7 +13,7 @@ const createUser = createAsyncThunk('user/createUser', async(user)=> {
 })
 
 const login = createAsyncThunk('user/login', async(user)=> {
-    const url = backendUrl;
+    const url = `${backendUrl}/login`;
     try {
         const response = await axios.post(url, user)
         return response.data
