@@ -22,14 +22,14 @@ const login = createAsyncThunk('user/login', async(user)=> {
     }
 })
 
-const logout = createAsyncThunk('user/logout', async(user)=> {
-    const url = backendUrl;
-    try {
-        const response = await axios.post(url, user)
-        return response.data
-    } catch (error) {
-        throw new Error(`Could not logout user ${error}`)
-    }
-})
+// const logout = createAsyncThunk('user/logout', async(user)=> {
+//     const url = backendUrl;
+//     try {
+//         const response = await axios.post(url, user)
+//         return response.data
+//     } catch (error) {
+//         throw new Error(`Could not logout user ${error}`)
+//     }
+// })
 
-export {createUser, login, logout}
+export {createUser, login}
