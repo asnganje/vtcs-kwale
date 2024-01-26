@@ -1,0 +1,7 @@
+services:
+  - name: vtcFrontEnd
+    type: web
+    buildCommand: npm install && npm run build
+    envVars:
+      - key: REACT_APP_BACKEND_URL
+        value: https://vtc-backend-zsy1.onrender.com
