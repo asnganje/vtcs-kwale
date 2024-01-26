@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios'
-const backendUrl = "http://localhost:3000/api/v1/vtc"
+const backendUrl = "https://vtc-backend-zsy1.onrender.com" || "http://localhost:3000/api/v1/vtc"
 const createUser = createAsyncThunk('user/createUser', async(user)=> {
     const url = `${backendUrl}/register`;
     try {
