@@ -6,7 +6,7 @@ import mainImg from '../assets/vtc.png'
 const Dashboard = () => {
     const {loggedIn} = useSelector((store)=> store.user)
     return(
-        <main className="h-[100%] mx-[5%]">
+        <main className="relative h-[100%] mx-[5%]">
             <Header />
             {loggedIn && <p className="text-green-500 text-2xl mx-[40%] font-mono">Success...</p>}
             <div className="flex flex-col lg:flex-row gap-3 justify-between h-full bg-blue-700 p-8">
