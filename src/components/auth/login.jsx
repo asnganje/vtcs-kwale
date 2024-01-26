@@ -46,7 +46,7 @@ const Login = () => {
     <div className="relative h-screen mx-[5%]">
       <Header />
       <div className="flex flex-col gap-5 items-center text-xl font-mono justify-center">
-        <div className="bg-blue-100 p-5 shadow-lg rounded-md h-full w-[65vh] mt-10">
+        <div className="bg-blue-100 p-5 shadow-lg rounded-md h-full w-[100%] mt-10">
           <form onSubmit={handleLoginSubmit}>
             <div className="mb-3 flex gap-8">
               <label className="text-gray-600">Email</label>
