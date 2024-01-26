@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios'
 const backendUrl = "https://vtc-backend-zsy1.onrender.com" || "http://localhost:3000/api/v1/vtc"
 const createUser = createAsyncThunk('user/createUser', async(user)=> {
-    const url = `${backendUrl}/register`;
+    const url = `${backendUrl}/api/v1/vtc/register`;
     try {
         const response = await axios.post(url, user)
         return response.data;
@@ -13,7 +13,7 @@ const createUser = createAsyncThunk('user/createUser', async(user)=> {
 })
 
 const login = createAsyncThunk('user/login', async(user)=> {
-    const url = `${backendUrl}/login`;
+    const url = `${backendUrl}/api/v1/vtc/login`;
     try {
         const response = await axios.post(url, user)
         return response.data
