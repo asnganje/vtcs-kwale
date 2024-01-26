@@ -59,8 +59,9 @@ const Login = () => {
                     </div> 
                     <div className="mb-3 flex gap-3">
                         <label className="text-gray-600">Password</label>
-                        <input type="text"
+                        <input
                         value={password}
+                        type="password"
                         onChange={passwordChangeHandler} 
                         className="w-full rounded-md p-2 focus:outline-none focus:ring focus:border-blue-300"
                         />
