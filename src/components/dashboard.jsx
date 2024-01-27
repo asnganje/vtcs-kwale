@@ -1,14 +1,14 @@
-import { useSelector } from "react-redux";
 import Footer from "./footer";
 import Header from "./header";
 import mainImg from '../assets/vtc.png'
+import { useState } from "react";
 
 const Dashboard = () => {
-    const {loggedIn} = useSelector((store)=> store.user)
+    const [candidate, setCandidate] = useState(localStorage.getItem('user'))
     return(
         <main className="relative h-[100%] mx-[5%]">
-            <Header />
-            {loggedIn && <p className="text-green-500 text-2xl mx-[40%] font-mono">Success...</p>}
+            <Header setCandidate={setCandidate}/>
+            {!candidate && <p className="text-red-500 text-xl text-center font-mono animate-pulse">Please login to access services...</p>}
             <div className="flex flex-col lg:flex-row gap-3 justify-between h-full bg-blue-700 p-8">
                 <div className="flex flex-col w-[100%]">
                     <h2 className="text-white w-[100%] text-4xl font-bold font-mono">
