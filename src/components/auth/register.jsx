@@ -44,7 +44,7 @@ const Register = () => {
             <Header />
             {registered && <p className="text-green-500 text-2xl mx-[40%] font-mono">Success...</p>}
             <div className="flex relative flex-col gap-3 items-center justify-center text-xl font-mono mt-5">
-                    <div className="bg-blue-100 p-5 shadow-lg rounded-md w-[100%]">
+                    <div className="bg-blue-100 p-5 shadow-lg rounded-md w-[100%] md:w-[70vh]">
                         <form onSubmit={handleUserCreate}>
                             <div className="mb-3 flex gap-5">
                                 <label className="mt-1">Firstname</label>
