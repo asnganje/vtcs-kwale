@@ -8,15 +8,16 @@ import { RxCross2 } from "react-icons/rx";
 import { useState, useEffect } from "react";
 
 const data = [
-    {id: nanoid(), text: "VTCs"},
-    {id: nanoid(), text: "Courses"},
-    {id: nanoid(), text: "Reports"}
+    {id: nanoid(), text: "VTCs", route: "/vtcs"},
+    {id: nanoid(), text: "Courses", route: "/courses"},
+    {id: nanoid(), text: "Reports", route: "/reports"}
 ]
-const Header = () => {
+const Header = ({setCandidate}) => {
     const [isNavOpen, setIsNavOpen] = useState(false)
 
     const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 768);
 
+    
     useEffect(() => {
     const handleResize = () => {
       setIsSmallScreen(window.innerWidth < 768);
@@ -36,6 +37,7 @@ const Header = () => {
     const logOutHandler = ()=> {
         dispatch(setLoggedOut(false))
         localStorage.removeItem('user')
+        setCandidate(localStorage.getItem('user'))
         navigate('/')
     }
 
@@ -47,9 +49,16 @@ const Header = () => {
         setIsNavOpen(false)
     }
 
+    const handleHeaderItemClick = (id) => {
+        const targetItem = data.find((el)=>el.id === id)
+        if(headerUser) {
+            navigate(`${targetItem.route}`)
+        }
+    }
+
     const renderedHeaderItems = data.map((item)=> {
         return(
-            <li className="cursor-pointer text-blue-800 p-2 text-xl font-bold hover:bg-blue-400 hover:text-white hover:rounded-md" key={item.id}>{item.text}</li>
+            <li className="cursor-pointer text-blue-800 p-2 text-xl font-bold hover:bg-blue-400 hover:text-white hover:rounded-md" key={item.id} onClick={()=>handleHeaderItemClick(item.id)}>{item.text}</li>
         )
     })
     return(
