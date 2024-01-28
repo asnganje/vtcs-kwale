@@ -72,7 +72,7 @@ const Login = () => {
               Login
             </button>
           </form>
-          {errors && <p className="text-red-500 animate-bounce">{errors}</p>}
+          {errors && <p className="text-red-500 mt-2 animate-pulse">{errors}</p>}
           <div className="flex gap-5 mt-5">
             <p className="text-gray-600 italic">Not registered?</p>
             <Link
