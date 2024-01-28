@@ -78,7 +78,7 @@ const Register = () => {
                                 <input 
                                 value={password}
                                 onChange={passwordChanger} 
-                                type="password"
+                                type="text"
                                 className="w-full ml-2.5 rounded-md p-2 focus:outline-none focus:ring focus:border-blue-300" 
                                 />
                             </div>
