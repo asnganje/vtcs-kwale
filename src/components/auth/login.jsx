@@ -59,7 +59,7 @@ const Login = () => {
   return (
     <div className="relative h-screen mx-[5%]">
       <Header />
-      <div className="flex flex-col gap-5 items-center text-xl font-mono justify-center">
+      <div className="flex flex-col gap-5 items-center text-xl font-mono justify-center mt-10">
         <div className="bg-blue-100 p-5 shadow-lg rounded-md h-full w-[100%] md:w-[70vh] mt-10">
           <form onSubmit={handleLoginSubmit}>
             <div className="mb-3 flex gap-11 w-[100%]">
