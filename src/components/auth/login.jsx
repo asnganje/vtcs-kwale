@@ -3,13 +3,15 @@ import { Link, useNavigate } from "react-router-dom";
 import Header from "../header";
 import Footer from "../footer";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../redux/thunks/userThunk";
 import { setLoggedIn } from "../../redux/store";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const {errors} = useSelector((store)=>store.user)
+
 
   const navigate = useNavigate();
 
@@ -30,11 +32,11 @@ const Login = () => {
     dispatch(login(user))
       .then((result) => {
         if (result.payload) {
+          setEmail("");
+          setPassword("");
           localStorage.setItem("user", result.payload.msg.firstName);
           dispatch(setLoggedIn(true));
           navigate("/");
-          setEmail("");
-          setPassword("");
         }
       })
       .catch((error) => {
@@ -70,6 +72,7 @@ const Login = () => {
               Login
             </button>
           </form>
+          {errors && <p className="text-red-500 animate-bounce">{errors}</p>}
           <div className="flex gap-5 mt-5">
             <p className="text-gray-600 italic">Not registered?</p>
             <Link
