@@ -12,24 +12,20 @@ const createUser = createAsyncThunk('user/createUser', async(user)=> {
 
 })
 
-const login = createAsyncThunk('user/login', async(user)=> {
-    const url = `${backendUrl}/api/v1/vtc/login`;
+const login = createAsyncThunk('user/login', async (user, { rejectWithValue }) => {
     try {
-        const response = await axios.post(url, user)
-        return response.data
-    } catch (error) {
-        throw new Error(`Could not login user ${error}`)
-    }
-})
+        const url = `${backendUrl}/api/v1/vtc/login`;
+        const { email, password } = user;
+        const response = await axios.post(url, { email, password });
 
-// const logout = createAsyncThunk('user/logout', async(user)=> {
-//     const url = backendUrl;
-//     try {
-//         const response = await axios.post(url, user)
-//         return response.data
-//     } catch (error) {
-//         throw new Error(`Could not logout user ${error}`)
-//     }
-// })
+        if (response.data) {
+            return response.data;
+        } else {
+            throw new Error(`Could not login user`);
+        }
+    } catch (error) {
+        return rejectWithValue(error.response.data.msg);
+    }
+});
 
 export {createUser, login}
