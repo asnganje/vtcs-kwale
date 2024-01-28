@@ -10,6 +10,7 @@ const person = {
 
 const userSlice = createSlice({
     name: "user",
+    errors: '',
     initialState: person,
     reducers: {
     setLoggedIn: (state, action) => {
@@ -38,8 +39,9 @@ const userSlice = createSlice({
         state.isLoading = false;
         state.dataU.push(action.payload);
     }),
-    builder.addCase(login.rejected, (state) => {
+    builder.addCase(login.rejected, (state, action) => {
         state.isLoading = false;
+        state.errors = action.payload
     });
 },
 });
