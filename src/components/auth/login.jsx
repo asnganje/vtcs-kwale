@@ -6,12 +6,24 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../redux/thunks/userThunk";
 import { setLoggedIn } from "../../redux/store";
+import { FaRegEye } from "react-icons/fa";
+import { FaRegEyeSlash } from "react-icons/fa";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [visible, setVisible] = useState(false)
   const {errors} = useSelector((store)=>store.user)
 
+  let textType;
+  if(visible) {
+    textType = "text"
+  } else {
+    textType = "password"
+  }
+  const visibilityHandler = () => {
+    setVisible(!visible)
+  }
 
   const navigate = useNavigate();
 
@@ -50,25 +62,33 @@ const Login = () => {
       <div className="flex flex-col gap-5 items-center text-xl font-mono justify-center">
         <div className="bg-blue-100 p-5 shadow-lg rounded-md h-full w-[100%] md:w-[70vh] mt-10">
           <form onSubmit={handleLoginSubmit}>
-            <div className="mb-3 flex gap-8">
+            <div className="mb-3 flex gap-11 w-[100%]">
               <label className="text-gray-600">Email</label>
               <input
                 value={email}
                 onChange={emailChangeHandler}
                 type="text"
-                className="w-[80%] ml-3 rounded-md p-2 focus:outline-none focus:ring focus:border-blue-300"
+                className="w-[100%] mr-[8%] rounded-md p-2 focus:outline-none focus:ring focus:border-blue-300"
               />
             </div>
-            <div className="mb-3 flex gap-3">
+            <div className="mb-3 flex gap-2 w-[100%]">
               <label className="text-gray-600">Password</label>
               <input
                 value={password}
-                type="password"
+                type={textType}
                 onChange={passwordChangeHandler}
-                className="w-full rounded-md p-2 focus:outline-none focus:ring focus:border-blue-300"
+                className="w-[100%] rounded-md p-2 focus:outline-none focus:ring focus:border-blue-300"
               />
+              
+              <span className="">
+              {visible &&<FaRegEye className="text-2xl cursor-pointer mt-2" onClick={visibilityHandler}/>}
+              
+              {!visible && <FaRegEyeSlash className="text-2xl cursor-pointer mt-2" onClick={visibilityHandler}/>}
+              
+              </span>
+              
             </div>
-            <button className="text-white rounded-md w-[40%] mx-[45%] bg-blue-400 hover:bg-blue-500 p-2">
+            <button className="text-white rounded-md w-[40%] mx-[35%] bg-blue-400 hover:bg-blue-500 p-2">
               Login
             </button>
           </form>
