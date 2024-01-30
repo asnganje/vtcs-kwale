@@ -6,6 +6,9 @@ const VTCs = () => {
     return(
         <section>
             <Header />
+            <div>
+                VTCs
+            </div>
             <Footer />
         </section>
     )
