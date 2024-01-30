@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createVTC } from "../thunks/centresThunk";
+import { createVTC, getAllVTCs } from "../thunks/centresThunk";
 
 const yp = {
     isLoading: false,
@@ -22,7 +22,17 @@ const centresSlice = createSlice({
         builder.addCase(createVTC.rejected, (state, action)=> {
             state.isLoading = false
             state.error = action.payload
+        }),
+        builder.addCase(getAllVTCs.pending, (state)=> {
+            state.isLoading = true
+        }),
+        builder.addCase(getAllVTCs.fulfilled, (state, action)=>{
+            state.data = action.payload.msg
+        }),
+        builder.addCase(getAllVTCs.rejected, (state, action)=> {
+            state.error = action.payload
         })
+
     } 
 })
 
