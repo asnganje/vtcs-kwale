@@ -8,7 +8,7 @@ const Dashboard = () => {
     return(
         <main className="relative h-[100%] mx-[5%]">
             <Header setCandidate={setCandidate}/>
-            {!candidate && <p className="text-red-500 text-xl text-center font-mono animate-pulse">Please login to access services...</p>}
+            {!candidate && <p className="text-red-500 text-xl text-center font-mono animate-pulse">Please login to see reports!!!</p>}
             <div className="flex flex-col lg:flex-row gap-3 justify-between h-full bg-blue-700 p-8">
                 <div className="flex flex-col w-[100%]">
                     <h2 className="text-white w-[100%] text-4xl font-bold font-mono">
