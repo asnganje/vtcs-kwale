@@ -14,6 +14,7 @@ const data = [
 ]
 const Header = ({setCandidate}) => {
     const [isNavOpen, setIsNavOpen] = useState(false)
+    const [activeItemId, setActiveItemId] = useState(null)
 
     const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 768);
 
@@ -50,6 +51,7 @@ const Header = ({setCandidate}) => {
     }
 
     const handleHeaderItemClick = (id) => {
+        setActiveItemId(id)
         const targetItem = data.find((el)=>el.id === id)
         if(!headerUser && targetItem.text !== "Reports") {
             navigate(`${targetItem.route}`)
@@ -60,9 +62,11 @@ const Header = ({setCandidate}) => {
         }
     }
 
+    
     const renderedHeaderItems = data.map((item)=> {
+        
         return(
-            <li className="cursor-pointer text-blue-800 p-2 text-xl font-bold hover:bg-blue-400 hover:text-white hover:rounded-md" key={item.id} onClick={()=>handleHeaderItemClick(item.id)}>{item.text}</li>
+            <li className={`cursor-pointer text-blue-800 p-2 text-xl font-bold ${activeItemId === item.id? 'bg-blue-400 text-white rounded-md' : 'hover:bg-blue-400 hover:text-white hover:rounded-md'}`} key={item.id} onClick={()=>handleHeaderItemClick(item.id)}>{item.text}</li>
         )
     })
     return(
