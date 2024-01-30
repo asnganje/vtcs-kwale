@@ -51,6 +51,10 @@ const Header = ({setCandidate}) => {
 
     const handleHeaderItemClick = (id) => {
         const targetItem = data.find((el)=>el.id === id)
+        if(!headerUser && targetItem.text !== "Reports") {
+            navigate(`${targetItem.route}`)
+        }
+
         if(headerUser) {
             navigate(`${targetItem.route}`)
         }
@@ -65,12 +69,15 @@ const Header = ({setCandidate}) => {
         <>
         <div className="flex items-center justify-between shadow-lg">
             <div className="w-[15vh] h-[15vh] cursor-pointer">
+                <Link to = "/">
                 <img src={kwaleLogo} alt="kwale county logo" />
+                </Link>
             </div>
             {!isSmallScreen? <div className="flex items-center space-x-4">
                 <nav>
                     <ul className="flex space-x-4">
                         {renderedHeaderItems}
+                        
                     </ul>
                 </nav>
                 {<div className="p-2 flex items-center space-x-4 w-full">
