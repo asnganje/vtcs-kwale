@@ -1,8 +1,12 @@
+import Header from "./header";
+import Footer from "./footer";
+
 const Courses = () => {
     return(
-        <div>
-            Our Courses
-        </div>
+        <section>
+             <Header />
+             <Footer />
+        </section>
     )
 }
 
