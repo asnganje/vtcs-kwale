@@ -1,8 +1,12 @@
+import Header from "./header";
+import Footer from "./footer";
+
 const Reports = () => {
     return(
-        <div>
-            Our Reports
-        </div>
+        <section>
+             <Header />
+             <Footer />
+        </section>
     )
 }
 
