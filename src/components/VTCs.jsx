@@ -1,8 +1,13 @@
+import Footer from "./footer";
+import Header from "./header";
+
+
 const VTCs = () => {
     return(
-        <div>
-            Our VTCs
-        </div>
+        <section>
+            <Header />
+            <Footer />
+        </section>
     )
 }
 
