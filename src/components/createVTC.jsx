@@ -1,7 +1,7 @@
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { Link, useNavigate} from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useDispatch} from "react-redux";
+import { useState } from "react";
 import { createVTC, getAllVTCs } from "../redux/thunks/centresThunk";
 import Footer from "./footer";
 import Header from "./header";
