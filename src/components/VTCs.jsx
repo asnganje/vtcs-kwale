@@ -11,7 +11,8 @@ const tableData = [
     {id: nanoid(), text:"VTC Name"},
     {id: nanoid(), text:"Ward"},
     {id: nanoid(), text:"Email"},
-    {id: nanoid(), text:"Phone"}
+    {id: nanoid(), text:"Phone"},
+    {id: nanoid(), text:"Action"}
 ]
 
 const VTCs = () => {
@@ -43,12 +44,13 @@ const VTCs = () => {
 
     const renderedVTCRows = data.map((el, i)=> {
         return(
-            <tr key={el._id}>
+            <tr key={el._id} className="text-xl font-thin ">
                 <td>{i+1}</td>
                 <td>{el.name}</td>
                 <td>{el.ward}</td>
                 <td>{el.email}</td>
                 <td>{el.phone}</td>
+                <td><button className="bg-red-500 p-1 w-[80%] m-[8%] text-white rounded-md">Delete</button></td>
             </tr>
         )
     })
@@ -62,18 +64,18 @@ const VTCs = () => {
     return(
         <section className="relative h-screen">
             <Header />
-            <h1 className="text-center mt-[2%]">LIST OF VOCATIONAL TRAINING CENTRES IN THE COUNTY</h1>
-            <table className="mx-[25%] w-[50%] mt-[5%] bg-white border border-gray-300 shadow-md">
+            <h1 className="mt-[2%] text-2xl font-bold">LIST OF VOCATIONAL TRAINING CENTRES IN THE COUNTY</h1>
+            <table className="mx-[5%] w-[50%] mt-[5%] shadow-md">
                 <thead>
-                    <tr className="font-bold font-mono text-2xl">
+                    <tr className="font-bold text-white font-mono text-2xl bg-purple-500 rounded-md border shadow-lg">
                         {tableHeaders}
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="space-y-5">
                     {renderedVTCRows}
                 </tbody>
             </table>
-            <button onClick={redirectHandler} className="absolute bottom-[20%] right-[20%] p-2 bg-blue-500 font-mono text-xl text-white m-5 rounded-md">Add a VTC</button>
+            <button onClick={redirectHandler} className="absolute top-[15%] right-[2%] p-2 bg-blue-500 font-mono text-2xl text-white m-5 rounded-md">Add a VTC</button>
 
             <Footer />
         </section>
