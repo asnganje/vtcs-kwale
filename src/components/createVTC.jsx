@@ -52,7 +52,7 @@ const CreateVTC = () => {
     return(
         <section>
         <Header />
-        <div className="mx-[45%] my-[5%] w-[25%] border rounded-md p-3">
+        <div className="mx-[40%] my-[5%] w-[25%] bg-blue-200 border rounded-md p-3">
             <form className="flex flex-col gap-5" onSubmit={handleVTCSubmit}>
                 <div className="flex gap-5">
                     <label className="font-mono text-2xl">Name</label>
@@ -60,7 +60,7 @@ const CreateVTC = () => {
                     type="text"
                     value={name}
                     onChange={nameChangeHandler} 
-                    className="border w-[100%] rounded-md p-2 focus:outline-none focus:ring focus:border-blue-300"
+                    className="border w-[100%] ml-[5%] rounded-md p-2 focus:outline-none focus:ring focus:border-blue-300"
                     />
                 </div>
                 <div className="flex gap-5">
@@ -69,7 +69,7 @@ const CreateVTC = () => {
                     type="text"
                     value={ward}
                     onChange={wardChangeHandler} 
-                    className="border w-[100%] rounded-md p-2 focus:outline-none focus:ring focus:border-blue-300"
+                    className="border w-[100%] ml-[5%] rounded-md p-2 focus:outline-none focus:ring focus:border-blue-300"
                     />
                 </div>
                 <div className="flex gap-5">
@@ -97,7 +97,7 @@ const CreateVTC = () => {
                 </button>
             </form>
             <Link to="/vtcs">
-      <p className="flex items-center cursor-pointer hover:underline hover:text-blue-400 mb-10">
+      <p className="flex items-center justify-center mt-[5%] cursor-pointer hover:underline hover:text-blue-400 mb-10">
         <IoMdArrowRoundBack />
         Back to VTCs List
       </p>
