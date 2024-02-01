@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const baseUrl = "http://localhost:3000/api/v1/vtc/centre"
+const baseUrl = "https://vtc-backend-zsy1.onrender.com" || "http://localhost:3000/api/v1/vtc/centre"
 
 const createVTC = createAsyncThunk('vtc/createVTC', async (vtc)=> {
     try {
