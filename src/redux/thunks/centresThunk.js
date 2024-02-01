@@ -23,9 +23,10 @@ const getAllVTCs = createAsyncThunk('vtc/getAllVtcs', async ()=> {
 })
 
 const removeVTC = createAsyncThunk('vtc/removeVTC', async (vtc) => {
-    const {email} = vtc.email
+    const {email} = vtc
     try {
-        await axios.delete(baseUrl, email)
+        await axios.delete(baseUrl, {data: {email}})
+        return email
     } catch (error) {
         throw new Error(`The error is ${error}`)
     }
