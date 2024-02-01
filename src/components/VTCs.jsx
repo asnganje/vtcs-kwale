@@ -50,7 +50,7 @@ const VTCs = () => {
 
     const renderedVTCRows = data.map((el, i)=> {
         return(
-            <tr key={el._id} className="text-xl font-thin ">
+            <tr key={el._id} className="sm:text-xl text-sm font-thin ">
                 <td className="p-1">{i+1}</td>
                 <td className="p-1">{el.name}</td>
                 <td className="p-1">{el.ward}</td>
@@ -63,7 +63,7 @@ const VTCs = () => {
 
     const tableHeaders = tableData.map((head)=> {
         return(
-            <td key={head.id} className="p-2">{head.text}</td>
+            <td key={head.id} className="sm:text-xl text-sm p-2">{head.text}</td>
         )
     })
 
