@@ -52,7 +52,7 @@ const CreateVTC = () => {
     return(
         <section>
         <Header />
-        <div className="mx-[40%] my-[5%] w-[25%] bg-blue-200 border rounded-md p-3">
+        <div className="sm:mx-[30%] my-[5%] sm:w-[40%] mx-[10%] w-[80%] bg-blue-200 border rounded-md p-3">
             <form className="flex flex-col gap-5" onSubmit={handleVTCSubmit}>
                 <div className="flex gap-5">
                     <label className="font-mono text-2xl">Name</label>
@@ -78,7 +78,7 @@ const CreateVTC = () => {
                     type="text"
                     value={email}
                     onChange={emailChangeHandler} 
-                    className="border w-[100%] rounded-md p-2 focus:outline-none focus:ring focus:border-blue-300"                        
+                    className="border w-[100%] ml-[2%] rounded-md p-2 focus:outline-none focus:ring focus:border-blue-300"                        
                     />
                 </div>
                 <div className="flex gap-5">
@@ -87,7 +87,7 @@ const CreateVTC = () => {
                     type="text"
                     value={phone}
                     onChange={phoneChangeHandler} 
-                    className="border w-[100%] rounded-md p-2 focus:outline-none focus:ring focus:border-blue-300"
+                    className="border w-[100%] ml-[2%] rounded-md p-2 focus:outline-none focus:ring focus:border-blue-300"
                     />
                 </div>
                 <button
