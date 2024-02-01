@@ -51,36 +51,36 @@ const VTCs = () => {
     const renderedVTCRows = data.map((el, i)=> {
         return(
             <tr key={el._id} className="text-xl font-thin ">
-                <td>{i+1}</td>
-                <td>{el.name}</td>
-                <td>{el.ward}</td>
-                <td>{el.email}</td>
-                <td>{el.phone}</td>
-                <td><button className="bg-red-500 p-1 w-[80%] m-[8%] text-white rounded-md" onClick={()=>removeHandler(el)}>Delete</button></td>
+                <td className="p-1">{i+1}</td>
+                <td className="p-1">{el.name}</td>
+                <td className="p-1">{el.ward}</td>
+                <td className="p-1">{el.email}</td>
+                <td className="p-1">{el.phone}</td>
+                <td className="p-2"><button className="bg-red-500 p-1 text-white rounded-md" onClick={()=>removeHandler(el)}>Delete</button></td>
             </tr>
         )
     })
 
     const tableHeaders = tableData.map((head)=> {
         return(
-            <td key={head.id}>{head.text}</td>
+            <td key={head.id} className="p-2">{head.text}</td>
         )
     })
 
     return(
         <section className="relative h-screen">
             <Header />
-            <div className="flex justify-between">
+            <div className="flex flex-col sm:flex-row  items-centre justify-between">
                 <h1 className="mt-[2%] text-2xl font-bold">LIST OF VOCATIONAL TRAINING CENTRES IN THE COUNTY</h1>
                 <button onClick={redirectHandler} className="p-2 bg-blue-500 font-mono text-2xl text-white m-5 rounded-md">Add a VTC</button>
             </div>
-            <table className="mx-[5%] w-[50%] mt-[5%] shadow-md">
+            <table className="sm:mt-4 mt-5 sm:absolute sm:top-[30%] absolute top-[40%] left-[5%] sm:w-[50%] w-[10%] shadow-md">
                 <thead>
                     <tr className="font-bold text-white font-mono text-2xl bg-purple-500 rounded-md border shadow-lg">
                         {tableHeaders}
                     </tr>
                 </thead>
-                <tbody className="space-y-5">
+                <tbody >
                     {renderedVTCRows}
                 </tbody>
             </table>
